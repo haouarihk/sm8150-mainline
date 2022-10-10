@@ -2,7 +2,9 @@ name: build kernel
 
 on:
   push:
-    tags: '*'
+    branches: [ "vayu-6.0-rc1" ]
+  pull_request:
+    branches: [ "vayu-6.0-rc1" ]
 
 jobs:
   build:
