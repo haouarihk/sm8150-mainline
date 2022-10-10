@@ -15,23 +15,34 @@ jobs:
       
 #     - name: installing essentials
 #       run: sudo apt install -y gcc g++ build-essential flex bison libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils
-    - name: just checking directory workspace
-      run: ls  ${GITHUB_WORKSPACE} 
 
+
+    - name: Check out repository code
+      uses: actions/checkout@v3
+      
+    - name: cd into the workspace
+      run: cd ${{ github.workspace }}
+      
+    - name: just checking directory
+      run: ls
+      
     - name: Checkout zipper
       uses: actions/checkout@v2
       with:
         repository: lemniskett/AnyKernel3
         path: zipper
+        
     - name: just checking directory
       run: ls 
- #     - name: config to arm64
-#       run: export ARCH=arm64
-#     - name: Android kernel build
-#       run: make vayu_defconfig
       
-#     - name: Release build
-#       uses: ncipollo/release-action@v1
-#       with:
-#         artifacts: ${{ steps.build.outputs.outfile }}
-#         token: ${{ secrets.GITHUB_TOKEN }}
+    - name: config to arm64
+      run: export ARCH=arm64
+      
+    - name: Android kernel build
+      run: make vayu_defconfig
+      
+    - name: Release build
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: ${{ steps.build.outputs.outfile }}
+        token: ${{ secrets.GITHUB_TOKEN }}
