@@ -27,7 +27,7 @@ jobs:
       with:
         arch: arm64
         compiler: gcc/10
-        defconfig: vayu_defconfig
+        defconfig: sm8150.config
         image: Image.gz-dtb
 
     - name: Release build
