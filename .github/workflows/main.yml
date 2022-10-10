@@ -10,8 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout kernel source
-      uses: actions/checkout@v2
+    - name: updating apt
+      run: sudo apt update
+      
+    - name: installing essentials
+      run: sudo apt install -y gcc g++ build-essential flex bison libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils
+
 
     - name: Checkout zipper
       uses: actions/checkout@v2
@@ -19,23 +23,11 @@ jobs:
         repository: lemniskett/AnyKernel3
         path: zipper
         
-    - name: updating apt
-      run: sudo apt update
-      
-    - name: installing essentials
-      run: sudo apt install -y build-essential flex bison libssl-dev libelf-dev
-
+    - name: config to arm64
+      run: export ARCH=arm64
     - name: Android kernel build
-      uses: lemniskett/android-kernel-actions@master
-      id: build
-      env:
-        NAME: vayu-sm8150-mainline
-      with:
-        arch: arm64
-        compiler: gcc/10
-        defconfig: defconfig sm8150
-        image: Image.gz-dtb
-
+      run: make defconfig sm8150.config
+      
     - name: Release build
       uses: ncipollo/release-action@v1
       with:
