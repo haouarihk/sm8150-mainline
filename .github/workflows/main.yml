@@ -18,6 +18,12 @@ jobs:
       with:
         repository: lemniskett/AnyKernel3
         path: zipper
+        
+    - name: updating apt
+      run: sudo apt update
+      
+    - name: installing essentials
+      run: sudo apt install -y build-essential flex bison libssl-dev libelf-dev
 
     - name: Android kernel build
       uses: lemniskett/android-kernel-actions@master
