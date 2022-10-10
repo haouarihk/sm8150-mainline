@@ -23,11 +23,11 @@ jobs:
       uses: lemniskett/android-kernel-actions@master
       id: build
       env:
-        NAME: Dark-Ages-Último
+        NAME: vayu-sm8150-mainline
       with:
         arch: arm64
         compiler: gcc/10
-        defconfig: vince_defconfig
+        defconfig: vayu_defconfig
         image: Image.gz-dtb
 
     - name: Release build
