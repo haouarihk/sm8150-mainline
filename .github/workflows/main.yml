@@ -27,7 +27,7 @@ jobs:
       with:
         arch: arm64
         compiler: gcc/10
-        defconfig: sm8150.config
+        defconfig: sm8150
         image: Image.gz-dtb
 
     - name: Release build
