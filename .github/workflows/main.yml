@@ -15,7 +15,8 @@ jobs:
       
 #     - name: installing essentials
 #       run: sudo apt install -y gcc g++ build-essential flex bison libssl-dev libelf-dev git fakeroot ncurses-dev xz-utils
-
+    - name: just checking directory
+      run: ls 
 
     - name: Checkout zipper
       uses: actions/checkout@v2
