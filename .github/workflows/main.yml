@@ -26,7 +26,7 @@ jobs:
     - name: config to arm64
       run: export ARCH=arm64
     - name: Android kernel build
-      run: make defconfig sm8150.config
+      run: make vayu_defconfig
       
     - name: Release build
       uses: ncipollo/release-action@v1
