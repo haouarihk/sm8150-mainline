@@ -23,7 +23,7 @@ jobs:
         repository: lemniskett/AnyKernel3
         path: zipper
     - name: just checking directory
-      run: pwd 
+      run: ls 
  #     - name: config to arm64
 #       run: export ARCH=arm64
 #     - name: Android kernel build
