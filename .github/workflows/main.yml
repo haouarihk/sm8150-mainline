@@ -23,23 +23,14 @@ jobs:
     - name: cd into the workspace
       run: cd ${{ github.workspace }}
       
-    - name: just checking directory
-      run: ls
-      
     - name: Checkout zipper
       uses: actions/checkout@v2
       with:
         repository: lemniskett/AnyKernel3
         path: zipper
-        
-    - name: just checking directory
-      run: ls 
-      
-    - name: config to arm64
-      run: export ARCH=arm64
       
     - name: Android kernel build
-      run: make vayu_defconfig
+      run: make ARCH=arm64 vayu_defconfig
       
     - name: Release build
       uses: ncipollo/release-action@v1
